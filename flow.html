@@ -28,8 +28,16 @@
 
     <!-- Hero -->
     <section class="hero" style="min-height:60vh">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:99px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-muted);margin-bottom:2rem">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--purple);animation:pulse 2s infinite"></span>
+        Complete Continuity Toolkit · Open Source · Production Ready
+      </div>
       <h1><span style="color:var(--purple)">◆</span> Sirius <span class="gradient-text">Flow</span></h1>
       <p class="subtitle">Project state and work continuity. One tool call at session start gives the agent everything it needs — what's done, what's next, what was decided, and exactly where to resume. No re-reading. No re-discovery. No lost work.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+        <a href="#get-started" style="background:rgba(167,139,250,0.15);border:1px solid var(--purple);color:var(--purple);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:500">Get Started →</a>
+        <a href="https://github.com/siriusmcp/sirius-flow" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem">GitHub ↗</a>
+      </div>
     </section>
 
     <!-- The Problem -->
@@ -179,5 +187,6 @@
     </footer>
   </div>
   <script src="js/constellation.js"></script>
+  <style>@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }</style>
 </body>
 </html>
