@@ -59,19 +59,19 @@
         <a href="memory.html" class="product-card" style="text-decoration:none;color:inherit">
           <h3><span style="color:var(--emerald)">◆</span> Sirius Memory</h3>
           <p>Three-layer persistent memory. Trust-scored facts, semantic search, behavioral directives. Shared across all your machines and sessions. The agent remembers everything.</p>
-          <span class="tool-count" style="background:rgba(16,185,129,0.1);color:var(--emerald)">14 MCP tools · Live</span>
+          <span class="tool-count" style="background:rgba(16,185,129,0.1);color:var(--emerald)">Live</span>
         </a>
 
         <a href="hive.html" class="product-card" style="text-decoration:none;color:inherit">
           <h3><span style="color:var(--accent)">◆</span> Sirius Hive</h3>
           <p>Real-time multi-agent coordination. Conventions with validation, shared scratchpad, decisions, conflict resolution. Session-scoped shared state for concurrent work.</p>
-          <span class="tool-count">18 MCP tools · Live</span>
+          <span class="tool-count">Live</span>
         </a>
 
         <a href="flow.html" class="product-card" style="text-decoration:none;color:inherit">
           <h3><span style="color:var(--purple)">◆</span> Sirius Flow</h3>
           <p>Project state and work continuity. Task dependencies, checkpoints, handoffs. One tool call at session start gives the agent full context to resume seamlessly.</p>
-          <span class="tool-count" style="background:rgba(167,139,250,0.1);color:var(--purple)">15 MCP tools · Live</span>
+          <span class="tool-count" style="background:rgba(167,139,250,0.1);color:var(--purple)">Live</span>
         </a>
 
         <div class="product-card" style="opacity:0.6">
@@ -111,50 +111,49 @@
     <!-- How It Works -->
     <section class="section" style="border-top:1px solid var(--border)">
       <h2>How It Works</h2>
-      <p class="lead">Every product is an MCP server. Add it to your platform's config. The agent gets the tools immediately.</p>
+      <p class="lead">Every product is a standard MCP server. Add it to your platform's config — the agent gets the tools immediately. No SDK, no wrapper library, no vendor lock-in.</p>
 
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:monospace;font-size:0.85rem;color:var(--text-muted);overflow-x:auto;margin-bottom:2rem">
-        <div style="color:var(--accent)">// Add to your platform's MCP config (Cursor, Claude Code, Windsurf, etc.)</div>
-        <br>
-        {<br>
-        &nbsp;&nbsp;"mcpServers": {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--emerald)">"sirius-memory"</span>: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3", "args": ["-m", "sirius_memory.mcp"],<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": { "SIRIUS_API_KEY": "sm_live_..." }<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent)">"sirius-hive"</span>: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3", "args": ["-m", "sirius_hive.mcp"],<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": { "HIVE_BACKEND": "memory" }<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">"sirius-flow"</span>: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3", "args": ["-m", "sirius_flow.mcp"],<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": { "FLOW_BACKEND": "memory" }<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-        &nbsp;&nbsp;}<br>
-        }
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="product-card">
+          <h3>1. Install</h3>
+          <p>Clone the repo and install the Python package — or pull the Docker image. Each product is a single pip-installable package with zero required dependencies beyond the MCP SDK.</p>
+        </div>
+        <div class="product-card">
+          <h3>2. Configure</h3>
+          <p>Add one entry to your platform's MCP server list. Point it at the installed module. Set a backend (in-memory, SQLite, or hosted API key). Done.</p>
+        </div>
+        <div class="product-card">
+          <h3>3. Use</h3>
+          <p>Your agent now has the tools. Memory persists facts across sessions. Hive coordinates parallel work. Flow tracks project state. No code changes in your agent required.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Suite Integration -->
+    <!-- Better Together -->
     <section class="section" style="border-top:1px solid var(--border)">
       <h2>Better Together</h2>
-      <p class="lead">Each product works alone. When combined, they share signals that make the whole workflow seamless.</p>
+      <p class="lead">Each product works fully on its own — but when combined, they share structured signals that make multi-session workflows seamless.</p>
 
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;overflow-x:auto">
-        <table class="tool-table">
-          <thead>
-            <tr><th>Signal</th><th>From</th><th>To</th><th>What happens</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><code>suite_hints.parallel_tasks</code></td><td>Flow</td><td>Hive</td><td>Flow tells the agent when independent tasks exist — agent creates a Hive session to coordinate parallel work</td></tr>
-            <tr><td><code>promote_to_memory</code></td><td>Flow</td><td>Memory</td><td>On project complete, Flow returns decisions pre-formatted for Memory — agent pipes them to <code>sirius_fact_add</code></td></tr>
-            <tr><td><code>sirius_context</code></td><td>Memory</td><td>Flow/Hive</td><td>Past project preferences and conventions inform new Flow projects and Hive session setup</td></tr>
-            <tr><td>Hive conventions</td><td>Hive</td><td>Flow</td><td>After a Hive session seals, established conventions become Flow decisions for future reference</td></tr>
-          </tbody>
-        </table>
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="product-card">
+          <h3 style="color:var(--purple)">Flow → Hive</h3>
+          <p>When Flow detects independent tasks that can run in parallel, it signals the opportunity. The agent creates a Hive coordination session to split the work across multiple agents safely.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--emerald)">Flow → Memory</h3>
+          <p>When a project completes, Flow surfaces the durable lessons — architectural decisions, tool preferences, patterns learned — pre-formatted so the agent can persist them to Memory in one step.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--accent)">Memory → Flow & Hive</h3>
+          <p>Past preferences and conventions inform new projects. Memory provides the accumulated context that shapes how Flow structures tasks and how Hive establishes conventions.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--cyan)">Hive → Flow</h3>
+          <p>After a Hive coordination session seals, established conventions and decisions carry forward as Flow records — informing future sessions about what was agreed and why.</p>
+        </div>
       </div>
 
-      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:1.5rem">No product calls another directly. The agent is always the bridge. This keeps each product independently functional.</p>
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:1.5rem">No product calls another directly. The agent is always the bridge. Each product remains independently functional.</p>
     </section>
 
     <!-- Compatibility -->
