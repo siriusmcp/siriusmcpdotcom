@@ -31,7 +31,7 @@ body {
   height: 120vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .content { position: relative; z-index: 1; }
