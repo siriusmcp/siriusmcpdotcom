@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sirius Hive — Multi-Agent Coordination</title>
-  <meta name="description" content="Real-time coordination bus for concurrent AI agents. Conventions, scratchpad, decisions, conflict resolution — session-scoped shared state.">
+  <title>Sirius Hive — Multi-Agent Coordination Bus</title>
+  <meta name="description" content="Real-time coordination for concurrent AI agents. Immutable conventions with validation, shared scratchpad, decision audit trail, and structured conflict resolution — session-scoped, zero setup.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2360a5fa'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2360a5fa' stroke-width='0.5' opacity='0.5'/></svg>">
 </head>
 <body>
   <canvas id="constellation-bg"></canvas>
   <div class="content">
+
+    <!-- Navigation -->
     <nav class="nav">
       <div class="nav-inner">
         <a href="/" class="nav-brand">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#60a5fa"/><circle cx="12" cy="12" r="6" stroke="#60a5fa" stroke-width="0.7" opacity="0.6"/><circle cx="12" cy="12" r="10" stroke="#60a5fa" stroke-width="0.4" opacity="0.3"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" fill="#60a5fa"/>
+            <circle cx="12" cy="12" r="6" stroke="#60a5fa" stroke-width="0.7" opacity="0.6"/>
+            <circle cx="12" cy="12" r="10" stroke="#60a5fa" stroke-width="0.4" opacity="0.3"/>
+          </svg>
           Sirius MCP
         </a>
         <ul class="nav-links">
@@ -26,82 +32,278 @@
       </div>
     </nav>
 
-    <section class="hero" style="min-height:60vh">
+    <!-- Hero -->
+    <section class="hero" style="min-height:70vh">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:99px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-muted);margin-bottom:2rem">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite"></span>
+        18 MCP Tools · Open Source · Production Ready
+      </div>
       <h1><span style="color:var(--accent)">◆</span> Sirius <span class="gradient-text">Hive</span></h1>
-      <p class="subtitle">Real-time coordination bus for concurrent agents. Conventions, shared scratchpad, decisions, conflict resolution — session-scoped, no polling, zero setup.</p>
+      <p class="subtitle">The coordination bus that turns multi-agent chaos into structured collaboration. Conventions with real-time validation, shared state, decision audit, and conflict resolution — all session-scoped and zero-config.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+        <a href="https://github.com/siriusmcp/sirius-hive" style="background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:500">View on GitHub →</a>
+        <a href="#how-it-works" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem">How It Works ↓</a>
+      </div>
     </section>
 
-    <section class="section">
+    <!-- The Problem -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>The Problem</h2>
+      <p class="lead">You spawn 3 agents to build a feature. One uses camelCase, one uses snake_case, one invents a third convention. They overwrite each other's work. Nobody knows what was decided or why. Sound familiar?</p>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;color:var(--text-muted);font-size:0.95rem;line-height:1.8">
+        <strong style="color:var(--text)">Without Hive:</strong> Agents work in isolation → naming conflicts → duplicate work → silent overwrites → inconsistent output → manual cleanup<br><br>
+        <strong style="color:var(--text)">With Hive:</strong> Orchestrator sets conventions → agents validate before committing → conflicts surface immediately → decisions are recorded → output is consistent
+      </div>
+    </section>
+
+    <!-- How It Works — 4 Pillars -->
+    <section class="section" id="how-it-works" style="border-top:1px solid var(--border)">
       <h2>How It Works</h2>
-      <p class="lead">Orchestrator front-loads conventions, agents join and follow. Reduces multi-agent coordination from distributed consensus to read-the-spec-and-follow.</p>
+      <p class="lead">Four coordination primitives that reduce multi-agent consensus to "read the spec and follow it." The orchestrator front-loads everything before spawning agents.</p>
 
       <div class="product-grid">
         <div class="product-card">
-          <h3>Conventions</h3>
-          <p>Immutable rules validated at check time. Set naming styles, error shapes, API patterns — agents validate before committing.</p>
+          <h3><span style="color:var(--accent)">①</span> Conventions</h3>
+          <p>Immutable rules with real-time validation. Set naming patterns, error shapes, API styles — agents check proposed values before committing. Violations return the exact fix. Once set, conventions cannot be changed within a session.</p>
+          <span class="tool-count">hive_convention_set · hive_convention_check</span>
         </div>
         <div class="product-card">
-          <h3>Scratchpad</h3>
-          <p>Shared key-value store with namespace protection. Agents publish interfaces, read each other's output, append to shared lists.</p>
+          <h3><span style="color:var(--accent)">②</span> Scratchpad</h3>
+          <p>Shared key-value store with namespace protection. Agents publish interfaces under their own prefix, read shared context, append to collaborative lists. Supports <code style="color:var(--accent);background:var(--bg-elevated);padding:0.1rem 0.3rem;border-radius:3px;font-size:0.85rem">if_not_exists</code> to prevent overwrites.</p>
+          <span class="tool-count">hive_scratch_write · hive_scratch_read · hive_scratch_append</span>
         </div>
         <div class="product-card">
-          <h3>Decisions</h3>
-          <p>Audit trail of implementation choices. Every agent records what they decided and why — prevents re-litigation.</p>
+          <h3><span style="color:var(--accent)">③</span> Decisions</h3>
+          <p>Structured audit trail of implementation choices. Every agent records what they decided and why — prevents re-litigation, provides context for future sessions. Searchable, timestamped, attributed.</p>
+          <span class="tool-count">hive_decision_record</span>
         </div>
         <div class="product-card">
-          <h3>Conflicts</h3>
-          <p>Structured issue tracking within a session. Agents flag inconsistencies; orchestrator resolves. Nothing gets silently swallowed.</p>
+          <h3><span style="color:var(--accent)">④</span> Conflicts</h3>
+          <p>Structured issue tracking within a session. When an agent detects an inconsistency — a naming clash, a missing interface, a broken contract — they raise it formally. The orchestrator resolves with explanation.</p>
+          <span class="tool-count">hive_conflict_raise · hive_conflict_resolve · hive_conflict_list</span>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- Convention Validation Demo -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>Convention Validation in Action</h2>
+      <p class="lead">The killer feature. Agents validate proposed names against established patterns before committing — violations get caught with suggested fixes, not after the PR is up.</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.85rem;overflow-x:auto;line-height:1.9">
+        <div style="color:var(--text-muted)">// Orchestrator establishes naming convention before spawning agents</div>
+        <div><span style="color:var(--accent)">hive_convention_set</span>(<br>
+        &nbsp;&nbsp;session_id = <span style="color:var(--emerald)">"sess_react_build"</span>,<br>
+        &nbsp;&nbsp;category = <span style="color:var(--emerald)">"casing"</span>,<br>
+        &nbsp;&nbsp;rule = <span style="color:var(--emerald)">"snake_case for all Python identifiers"</span>,<br>
+        &nbsp;&nbsp;scope = <span style="color:var(--emerald)">"backend"</span><br>
+        )</div>
+        <br>
+        <div style="color:var(--text-muted)">// Agent checks before naming a function</div>
+        <div><span style="color:var(--accent)">hive_convention_check</span>(<br>
+        &nbsp;&nbsp;session_id = <span style="color:var(--emerald)">"sess_react_build"</span>,<br>
+        &nbsp;&nbsp;category = <span style="color:var(--emerald)">"casing"</span>,<br>
+        &nbsp;&nbsp;proposed = <span style="color:var(--emerald)">"getUserProfile"</span><br>
+        )</div>
+        <br>
+        <div style="color:var(--text-muted)">// Response — caught the violation with a fix:</div>
+        <div style="color:#ef4444">{</div>
+        <div>&nbsp;&nbsp;<span style="color:#ef4444">"status"</span>: <span style="color:#ef4444">"conflict"</span>,</div>
+        <div>&nbsp;&nbsp;<span style="color:var(--text-muted)">"convention"</span>: "snake_case for all Python identifiers",</div>
+        <div>&nbsp;&nbsp;<span style="color:var(--emerald)">"suggested_fix"</span>: <span style="color:var(--emerald)">"get_user_profile"</span>,</div>
+        <div>&nbsp;&nbsp;<span style="color:var(--text-muted)">"scope"</span>: "backend"</div>
+        <div style="color:#ef4444">}</div>
+      </div>
+
+      <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.25rem">
+          <div style="font-size:0.85rem;color:var(--emerald);font-weight:600;margin-bottom:0.5rem">✓ Passes validation</div>
+          <code style="font-size:0.8rem;color:var(--text-muted)">get_user_profile, fetch_api_data, build_response_body</code>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:1.25rem">
+          <div style="font-size:0.85rem;color:#ef4444;font-weight:600;margin-bottom:0.5rem">✗ Caught by validation</div>
+          <code style="font-size:0.8rem;color:var(--text-muted)">getUserProfile, FetchAPIData, BUILD_RESPONSE</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>Features</h2>
+      <p class="lead">Built for real multi-agent workflows. Every feature solves a problem we hit building production agent systems.</p>
+
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="product-card">
+          <h3>🔤 Casing Heuristics</h3>
+          <p>Auto-detects and validates snake_case, camelCase, PascalCase, and UPPER_SNAKE. Decomposes compound identifiers, checks every segment, and suggests the correct transformation. No regex config needed.</p>
+        </div>
+        <div class="product-card">
+          <h3>⏱️ Session Scoping</h3>
+          <p>Every Hive session has a 24-hour TTL by default. Sessions auto-expire, keeping state ephemeral. No stale coordination data accumulating. Extend TTL on active sessions when work runs long.</p>
+        </div>
+        <div class="product-card">
+          <h3>📋 Batch Validation</h3>
+          <p>Check multiple proposed values in a single call with <code style="color:var(--accent);background:var(--bg-elevated);padding:0.1rem 0.3rem;border-radius:3px;font-size:0.8rem">hive_convention_check_batch</code>. Returns per-value pass/fail with scope routing — validate an entire interface contract before writing any code.</p>
+        </div>
+        <div class="product-card">
+          <h3>📡 Agent Checkin</h3>
+          <p>Lifecycle signals: started, completed, blocked. The orchestrator sees which agents checked in and which went silent. Auto-joins the session on first checkin. Enables verification that all spawned work actually ran.</p>
+        </div>
+        <div class="product-card">
+          <h3>🎯 Orchestrator Workflow</h3>
+          <p>Front-load ALL conventions and shared context to the scratchpad BEFORE spawning agents. Agents join, read the snapshot, and work. Turns distributed consensus into a simple read-and-follow pattern.</p>
+        </div>
+        <div class="product-card">
+          <h3>📜 Event History</h3>
+          <p>Full audit log of every action in a session — conventions set, checks performed, conflicts raised, decisions made. Filterable by event type and limited for pagination. Post-mortem ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Tool Table -->
+    <section class="section" style="border-top:1px solid var(--border)">
       <h2>MCP Tools (18)</h2>
+      <p class="lead">Every tool is a single MCP call. No SDK, no client library, no API keys for local mode. Add the server to your config and go.</p>
+
       <div style="overflow-x:auto">
         <table class="tool-table">
-          <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+          <thead>
+            <tr><th>Tool</th><th>Category</th><th>Purpose</th></tr>
+          </thead>
           <tbody>
-            <tr><td><code>hive_session_create</code></td><td>Create a coordination session</td></tr>
-            <tr><td><code>hive_session_join</code></td><td>Join and receive full state snapshot</td></tr>
-            <tr><td><code>hive_session_checkin</code></td><td>Lifecycle signal (started/completed/blocked)</td></tr>
-            <tr><td><code>hive_session_seal</code></td><td>Seal session (read-only)</td></tr>
-            <tr><td><code>hive_session_status</code></td><td>Check state without joining</td></tr>
-            <tr><td><code>hive_session_extend</code></td><td>Extend TTL</td></tr>
-            <tr><td><code>hive_session_history</code></td><td>Full event log for audit</td></tr>
-            <tr><td><code>hive_convention_set</code></td><td>Establish an immutable rule</td></tr>
-            <tr><td><code>hive_convention_check</code></td><td>Validate a value against rules</td></tr>
-            <tr><td><code>hive_convention_check_batch</code></td><td>Validate multiple values at once</td></tr>
-            <tr><td><code>hive_convention_list</code></td><td>List all active conventions</td></tr>
-            <tr><td><code>hive_scratch_write</code></td><td>Write to shared scratchpad</td></tr>
-            <tr><td><code>hive_scratch_read</code></td><td>Read from scratchpad (key or prefix)</td></tr>
-            <tr><td><code>hive_scratch_append</code></td><td>Append to a list-valued key</td></tr>
-            <tr><td><code>hive_decision_record</code></td><td>Record an implementation decision</td></tr>
-            <tr><td><code>hive_conflict_raise</code></td><td>Flag an inconsistency</td></tr>
-            <tr><td><code>hive_conflict_resolve</code></td><td>Resolve with explanation</td></tr>
-            <tr><td><code>hive_conflict_list</code></td><td>List open/resolved conflicts</td></tr>
+            <tr><td><code>hive_session_create</code></td><td style="color:var(--text-muted);font-size:0.8rem">Session</td><td>Create a coordination session with optional TTL and conflict policy</td></tr>
+            <tr><td><code>hive_session_join</code></td><td style="color:var(--text-muted);font-size:0.8rem">Session</td><td>Join a session — returns full state snapshot (conventions, scratchpad, decisions)</td></tr>
+            <tr><td><code>hive_session_checkin</code></td><td style="color:var(--text-muted);font-size:0.8rem">Session</td><td>Record lifecycle signal (started/completed/blocked). Auto-joins if needed</td></tr>
+            <tr><td><code>hive_session_seal</code></td><td style="color:var(--text-muted);font-size:0.8rem">Session</td><td>Seal session as read-only. No further writes allowed</td></tr>
+            <tr><td><code>hive_session_status</code></td><td style="color:var(--text-muted);font-size:0.8rem">Session</td><td>Check session state without joining (active, sealed, expired)</td></tr>
+            <tr><td><code>hive_session_extend</code></td><td style="color:var(--text-muted);font-size:0.8rem">Session</td><td>Extend TTL on an active session when work runs longer than expected</td></tr>
+            <tr><td><code>hive_session_history</code></td><td style="color:var(--text-muted);font-size:0.8rem">Session</td><td>Full event log — filterable by type and limited for pagination</td></tr>
+            <tr><td><code>hive_convention_set</code></td><td style="color:var(--text-muted);font-size:0.8rem">Convention</td><td>Establish an immutable rule for a category and scope</td></tr>
+            <tr><td><code>hive_convention_check</code></td><td style="color:var(--text-muted);font-size:0.8rem">Convention</td><td>Validate a proposed value — returns pass or conflict with suggested_fix</td></tr>
+            <tr><td><code>hive_convention_check_batch</code></td><td style="color:var(--text-muted);font-size:0.8rem">Convention</td><td>Validate multiple values in one call — reduces round-trips</td></tr>
+            <tr><td><code>hive_convention_list</code></td><td style="color:var(--text-muted);font-size:0.8rem">Convention</td><td>List all conventions, optionally filtered by category or scope</td></tr>
+            <tr><td><code>hive_scratch_write</code></td><td style="color:var(--text-muted);font-size:0.8rem">Scratchpad</td><td>Write a key-value pair. Supports <code style="font-size:0.75rem">if_not_exists</code> to prevent overwrites</td></tr>
+            <tr><td><code>hive_scratch_read</code></td><td style="color:var(--text-muted);font-size:0.8rem">Scratchpad</td><td>Read by key or prefix — get one entry or scan a namespace</td></tr>
+            <tr><td><code>hive_scratch_append</code></td><td style="color:var(--text-muted);font-size:0.8rem">Scratchpad</td><td>Append a value to a list-valued key — safe for concurrent writers</td></tr>
+            <tr><td><code>hive_decision_record</code></td><td style="color:var(--text-muted);font-size:0.8rem">Decision</td><td>Record an implementation decision with rationale and agent attribution</td></tr>
+            <tr><td><code>hive_conflict_raise</code></td><td style="color:var(--text-muted);font-size:0.8rem">Conflict</td><td>Flag an inconsistency for resolution — structured, not free-text</td></tr>
+            <tr><td><code>hive_conflict_resolve</code></td><td style="color:var(--text-muted);font-size:0.8rem">Conflict</td><td>Resolve an open conflict with explanation and chosen resolution</td></tr>
+            <tr><td><code>hive_conflict_list</code></td><td style="color:var(--text-muted);font-size:0.8rem">Conflict</td><td>List conflicts — filter by status (open/resolved/all)</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Convention Validation</h2>
-      <p class="lead">The killer feature. Agents check proposed names against established patterns before committing — violations get caught with suggested fixes.</p>
+    <!-- Orchestrator Workflow -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>The Orchestrator Pattern</h2>
+      <p class="lead">The recommended workflow that eliminates coordination failures. Front-load everything, validate output.</p>
 
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:monospace;font-size:0.85rem;overflow-x:auto">
-        <div style="color:var(--text-muted)">// Set convention</div>
-        hive_convention_set(category="casing", rule="snake_case for all identifiers", immutable=true)<br><br>
-        <div style="color:var(--text-muted)">// Agent checks before naming</div>
-        hive_convention_check(category="casing", proposed="getUserProfile")<br><br>
-        <div style="color:var(--text-muted)">// Response:</div>
-        <span style="color:#ef4444">{ status: "conflict"</span>, suggested_fix: <span style="color:var(--emerald)">"get_user_profile"</span> }
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:0.75rem;font-weight:600">Before Spawn</div>
+          <ul style="list-style:none;font-size:0.9rem;color:var(--text-muted);line-height:2">
+            <li>→ Create Hive session</li>
+            <li>→ Set ALL conventions</li>
+            <li>→ Write shared types to scratchpad</li>
+            <li>→ Include session_id in each task prompt</li>
+          </ul>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--emerald);margin-bottom:0.75rem;font-weight:600">During Work</div>
+          <ul style="list-style:none;font-size:0.9rem;color:var(--text-muted);line-height:2">
+            <li>→ Agent joins, gets full snapshot</li>
+            <li>→ Checks conventions before naming</li>
+            <li>→ Writes output to own namespace</li>
+            <li>→ Raises conflicts if blocked</li>
+          </ul>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem">
+          <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--purple);margin-bottom:0.75rem;font-weight:600">After Completion</div>
+          <ul style="list-style:none;font-size:0.9rem;color:var(--text-muted);line-height:2">
+            <li>→ Read scratchpad outputs</li>
+            <li>→ Check conflict_list for unresolved</li>
+            <li>→ Verify checkin count matches spawns</li>
+            <li>→ Seal session for audit</li>
+          </ul>
+        </div>
       </div>
     </section>
 
+    <!-- Deployment -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>Deploy Your Way</h2>
+      <p class="lead">Same 18 MCP tools across all deployment tiers. Agents never know which tier they're hitting. Switch without changing agent code.</p>
+
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="product-card">
+          <h3>🖥️ Embedded</h3>
+          <p>In-process MCP server. No network, no containers. Clone, install, add to your MCP config. Data lives in memory — perfect for single-machine development.</p>
+          <div style="margin-top:1rem;padding:0.75rem;background:var(--bg-elevated);border-radius:6px;font-family:monospace;font-size:0.8rem;color:var(--text-muted)">
+            HIVE_BACKEND=memory
+          </div>
+        </div>
+        <div class="product-card">
+          <h3>🐳 Self-Hosted</h3>
+          <p>Docker container with HTTP API + MCP adapter. Multi-machine shared state, persistent storage, team coordination. Your infrastructure, your data, your rules.</p>
+          <div style="margin-top:1rem;padding:0.75rem;background:var(--bg-elevated);border-radius:6px;font-family:monospace;font-size:0.8rem;color:var(--text-muted)">
+            docker run -p 8200:8200 siriusmcp/hive
+          </div>
+        </div>
+        <div class="product-card">
+          <h3>☁️ Hosted</h3>
+          <p>Managed service at hive.siriusmcp.com. Zero ops, instant setup, API key auth, multi-tenant isolation. We handle uptime, you handle building.</p>
+          <div style="margin-top:1rem;padding:0.75rem;background:var(--bg-elevated);border-radius:6px;font-family:monospace;font-size:0.8rem;color:var(--text-muted)">
+            HIVE_BACKEND=hosted HIVE_API_KEY=sh_live_...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>Quick Start</h2>
+      <p class="lead">From zero to coordinated agents in under a minute.</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.85rem;overflow-x:auto;line-height:1.9">
+        <div style="color:var(--text-muted)"># Install</div>
+        <div style="color:var(--text)">pip install sirius-hive</div>
+        <br>
+        <div style="color:var(--text-muted)"># Add to your MCP config (Cursor, Claude Code, Windsurf, etc.)</div>
+        <div style="color:var(--text)">{</div>
+        <div>&nbsp;&nbsp;<span style="color:var(--accent)">"sirius-hive"</span>: {</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3",</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;"args": ["-m", "sirius_hive.mcp"],</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;"env": { "HIVE_BACKEND": "memory" }</div>
+        <div>&nbsp;&nbsp;}</div>
+        <div style="color:var(--text)">}</div>
+        <br>
+        <div style="color:var(--text-muted)"># That's it. Your agent now has 18 coordination tools.</div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="border-top:1px solid var(--border);text-align:center">
+      <h2>Stop fixing naming conflicts manually.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Give your agents a coordination bus. Open source. Self-hostable. Production-ready.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem">
+        <a href="https://github.com/siriusmcp/sirius-hive" style="background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:500">View on GitHub</a>
+        <a href="flow.html" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem">Next: Sirius Flow →</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-      <p><a href="https://github.com/siriusmcp/sirius-hive" style="color:var(--accent);text-decoration:none">View on GitHub →</a></p>
+      <p>Sirius Hive — Multi-agent coordination via the Model Context Protocol</p>
+      <p style="margin-top:0.5rem">
+        <a href="https://github.com/siriusmcp/sirius-hive" style="color:var(--accent);text-decoration:none">GitHub</a> ·
+        <a href="/" style="color:var(--text-muted);text-decoration:none">siriusmcp.com</a> ·
+        <a href="https://siriusmemory.com" style="color:var(--text-muted);text-decoration:none">siriusmemory.com</a>
+      </p>
     </footer>
+
   </div>
   <script src="js/constellation.js"></script>
+  <style>@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }</style>
 </body>
 </html>

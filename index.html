@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sirius MCP — Agent Infrastructure Suite</title>
-  <meta name="description" content="Universal MCP tools that improve any AI agent framework. Memory, coordination, project tracking — composable, independent, production-ready.">
+  <meta name="description" content="Universal MCP tools for AI agents. Persistent memory, multi-agent coordination, project continuity — self-hostable or hosted. Works with every major agent platform.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2360a5fa'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2360a5fa' stroke-width='0.5' opacity='0.5'/><circle cx='12' cy='12' r='10' fill='none' stroke='%2360a5fa' stroke-width='0.3' opacity='0.3'/></svg>">
 </head>
@@ -34,89 +34,133 @@
 
     <!-- Hero -->
     <section class="hero">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:99px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-muted);margin-bottom:2rem">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite"></span>
+        Open Source · Self-Hostable · Hosted Service Available
+      </div>
       <h1><span class="gradient-text">Agent Infrastructure</span><br>for the MCP Era</h1>
       <p class="subtitle">
         Universal tools that give any AI agent persistent memory, real-time coordination,
-        and project continuity. Composable. Independent. Production-ready.
+        and project continuity. Self-host on your own machine or use the managed API.
+        Works with 13+ agent platforms out of the box.
       </p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
-        <a href="memory.html" style="background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;">Explore the Suite →</a>
-        <a href="https://github.com/siriusmcp" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem;">GitHub ↗</a>
+        <a href="#products" style="background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:500">Explore the Suite →</a>
+        <a href="https://github.com/siriusmcp" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem">GitHub ↗</a>
       </div>
     </section>
 
-    <!-- Product Overview -->
-    <section class="section">
+    <!-- Products -->
+    <section class="section" id="products">
       <h2>The Suite</h2>
-      <p class="lead">Four complementary products under one protocol. Each works alone. Together, they compound.</p>
+      <p class="lead">Four complementary products. Each works independently. Together, they share signals and compound value. All speak the Model Context Protocol.</p>
 
       <div class="product-grid">
         <a href="memory.html" class="product-card" style="text-decoration:none;color:inherit">
           <h3><span style="color:var(--emerald)">◆</span> Sirius Memory</h3>
-          <p>Three-layer persistent memory. Trust-scored facts, semantic search, behavioral directives — shared across all machines and sessions.</p>
-          <span class="tool-count">14 MCP tools</span>
+          <p>Three-layer persistent memory. Trust-scored facts, semantic search, behavioral directives. Shared across all your machines and sessions. The agent remembers everything.</p>
+          <span class="tool-count" style="background:rgba(16,185,129,0.1);color:var(--emerald)">14 MCP tools · Live</span>
         </a>
 
         <a href="hive.html" class="product-card" style="text-decoration:none;color:inherit">
           <h3><span style="color:var(--accent)">◆</span> Sirius Hive</h3>
-          <p>Real-time multi-agent coordination. Conventions, scratchpad, decisions, conflict resolution — session-scoped shared state.</p>
-          <span class="tool-count">18 MCP tools</span>
+          <p>Real-time multi-agent coordination. Conventions with validation, shared scratchpad, decisions, conflict resolution. Session-scoped shared state for concurrent work.</p>
+          <span class="tool-count">18 MCP tools · Live</span>
         </a>
 
         <a href="flow.html" class="product-card" style="text-decoration:none;color:inherit">
           <h3><span style="color:var(--purple)">◆</span> Sirius Flow</h3>
-          <p>Project state and work continuity. Task dependencies, checkpoints, handoffs — seamless resumption across sessions.</p>
-          <span class="tool-count">15 MCP tools</span>
+          <p>Project state and work continuity. Task dependencies, checkpoints, handoffs. One tool call at session start gives the agent full context to resume seamlessly.</p>
+          <span class="tool-count" style="background:rgba(167,139,250,0.1);color:var(--purple)">15 MCP tools · Live</span>
         </a>
 
         <div class="product-card" style="opacity:0.6">
           <h3><span style="color:var(--cyan)">◆</span> Sirius Spec</h3>
-          <p>Quality standards and contracts. Agents query at decision points — structured validation, not passive style guides.</p>
+          <p>Quality standards and contracts. Agents query at decision points for structured validation. Domains, rules, examples, anti-patterns. Feeds into Hive as baseline conventions.</p>
           <span class="tool-count" style="background:rgba(6,182,212,0.1);color:var(--cyan)">Coming soon</span>
         </div>
       </div>
     </section>
 
+    <!-- Deployment Model -->
+    <section class="section" id="deployment" style="border-top:1px solid var(--border)">
+      <h2>Deploy Your Way</h2>
+      <p class="lead">Every product supports the same progressive deployment model. Start local, scale when you need to.</p>
+
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="product-card">
+          <h3>🖥️ Embedded</h3>
+          <p>In-process MCP server on your own machine. No network, no service, no dependencies. Clone the repo, install, run. Your data stays local.</p>
+          <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted)">Best for: individual developers, air-gapped environments</div>
+        </div>
+        <div class="product-card">
+          <h3>🐳 Self-Hosted</h3>
+          <p>Docker container or dedicated server. HTTP API + MCP adapter. Multi-tenant, multi-machine shared state. Your infrastructure, your data.</p>
+          <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted)">Best for: teams, enterprises, on-premise requirements</div>
+        </div>
+        <div class="product-card">
+          <h3>☁️ Hosted Service</h3>
+          <p>Managed API at *.siriusmcp.com. Zero ops, instant setup. API key authentication, multi-tenant isolation, automatic backups. We run it, you use it.</p>
+          <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted)">Best for: zero-ops setup, cross-team collaboration</div>
+        </div>
+      </div>
+
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:2rem">Same MCP tools across all tiers. Agents never know which tier they're hitting. Switch tiers without changing agent code.</p>
+    </section>
+
     <!-- How It Works -->
-    <section class="section">
+    <section class="section" style="border-top:1px solid var(--border)">
       <h2>How It Works</h2>
-      <p class="lead">Every product is an MCP server. Any agent platform with MCP support gets the tools instantly — no SDK, no API keys, no vendor lock-in.</p>
+      <p class="lead">Every product is an MCP server. Add it to your platform's config. The agent gets the tools immediately.</p>
 
       <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:monospace;font-size:0.85rem;color:var(--text-muted);overflow-x:auto;margin-bottom:2rem">
-        <div style="color:var(--accent)">// One config. Any platform. All tools.</div>
+        <div style="color:var(--accent)">// Add to your platform's MCP config (Cursor, Claude Code, Windsurf, etc.)</div>
         <br>
         {<br>
         &nbsp;&nbsp;"mcpServers": {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--emerald)">"sirius-memory"</span>: { "command": "python3", "args": ["-m", "sirius_memory.mcp"] },<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent)">"sirius-hive"</span>: { "command": "python3", "args": ["-m", "sirius_hive.mcp"] },<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">"sirius-flow"</span>: { "command": "python3", "args": ["-m", "sirius_flow.mcp"] }<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--emerald)">"sirius-memory"</span>: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3", "args": ["-m", "sirius_memory.mcp"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": { "SIRIUS_API_KEY": "sm_live_..." }<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent)">"sirius-hive"</span>: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3", "args": ["-m", "sirius_hive.mcp"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": { "HIVE_BACKEND": "memory" }<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">"sirius-flow"</span>: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3", "args": ["-m", "sirius_flow.mcp"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": { "FLOW_BACKEND": "memory" }<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
         &nbsp;&nbsp;}<br>
         }
       </div>
+    </section>
 
-      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-        <div style="text-align:center;padding:1.5rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">🔌</div>
-          <div style="font-weight:600;margin-bottom:0.5rem">Universal MCP</div>
-          <div style="color:var(--text-muted);font-size:0.85rem">Works with Cursor, Claude Code, Windsurf, Copilot, JetBrains, Zed, and 7 more platforms</div>
-        </div>
-        <div style="text-align:center;padding:1.5rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">🧩</div>
-          <div style="font-weight:600;margin-bottom:0.5rem">Composable</div>
-          <div style="color:var(--text-muted);font-size:0.85rem">Each product works alone. Combined, they share signals — Flow tells Hive when to parallelize</div>
-        </div>
-        <div style="text-align:center;padding:1.5rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">🏗️</div>
-          <div style="font-weight:600;margin-bottom:0.5rem">Self-hosted</div>
-          <div style="color:var(--text-muted);font-size:0.85rem">Your machine, your data. In-process MCP servers — nothing leaves your environment</div>
-        </div>
+    <!-- Suite Integration -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>Better Together</h2>
+      <p class="lead">Each product works alone. When combined, they share signals that make the whole workflow seamless.</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;overflow-x:auto">
+        <table class="tool-table">
+          <thead>
+            <tr><th>Signal</th><th>From</th><th>To</th><th>What happens</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>suite_hints.parallel_tasks</code></td><td>Flow</td><td>Hive</td><td>Flow tells the agent when independent tasks exist — agent creates a Hive session to coordinate parallel work</td></tr>
+            <tr><td><code>promote_to_memory</code></td><td>Flow</td><td>Memory</td><td>On project complete, Flow returns decisions pre-formatted for Memory — agent pipes them to <code>sirius_fact_add</code></td></tr>
+            <tr><td><code>sirius_context</code></td><td>Memory</td><td>Flow/Hive</td><td>Past project preferences and conventions inform new Flow projects and Hive session setup</td></tr>
+            <tr><td>Hive conventions</td><td>Hive</td><td>Flow</td><td>After a Hive session seals, established conventions become Flow decisions for future reference</td></tr>
+          </tbody>
+        </table>
       </div>
+
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:1.5rem">No product calls another directly. The agent is always the bridge. This keeps each product independently functional.</p>
     </section>
 
     <!-- Compatibility -->
-    <section class="section">
+    <section class="section" id="compatibility" style="border-top:1px solid var(--border)">
       <h2>Platform Compatibility</h2>
-      <p class="lead">Any platform that supports MCP stdio transport gets the full suite.</p>
+      <p class="lead">Any platform that supports MCP stdio transport gets the full suite. One integration pattern, every agent framework.</p>
 
       <div style="overflow-x:auto">
         <table class="tool-table">
@@ -127,28 +171,39 @@
             <tr><td>Cursor</td><td>IDE</td><td>✅</td><td>✅</td><td>✅</td></tr>
             <tr><td>Claude Code</td><td>CLI</td><td>✅</td><td>✅</td><td>✅</td></tr>
             <tr><td>Windsurf</td><td>IDE</td><td>✅</td><td>✅</td><td>✅</td></tr>
-            <tr><td>GitHub Copilot</td><td>IDE</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>GitHub Copilot</td><td>IDE Extension</td><td>✅</td><td>✅</td><td>✅</td></tr>
             <tr><td>JetBrains (Junie)</td><td>IDE</td><td>✅</td><td>✅</td><td>✅</td></tr>
             <tr><td>Zed AI</td><td>Editor</td><td>✅</td><td>✅</td><td>✅</td></tr>
-            <tr><td>Cline</td><td>Extension</td><td>✅</td><td>✅</td><td>✅</td></tr>
-            <tr><td>Continue</td><td>Extension</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Cline</td><td>VS Code Extension</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Continue</td><td>VS Code / JetBrains</td><td>✅</td><td>✅</td><td>✅</td></tr>
             <tr><td>Codex (OpenAI)</td><td>CLI</td><td>✅</td><td>✅</td><td>✅</td></tr>
-            <tr><td>Augment Code</td><td>Extension</td><td>✅</td><td>✅</td><td>✅</td></tr>
-            <tr><td>Kiro CLI/IDE</td><td>CLI/IDE</td><td>✅</td><td>✅</td><td>✅</td></tr>
-            <tr><td>Hermes Agent</td><td>Harness</td><td>✅</td><td>✅</td><td>✅</td></tr>
-            <tr><td>OpenClaw</td><td>Harness</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Augment Code</td><td>VS Code Extension</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Kiro CLI / IDE</td><td>CLI + IDE</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Hermes Agent</td><td>Agent Harness</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>OpenClaw</td><td>Agent Harness</td><td>✅</td><td>✅</td><td>✅</td></tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="border-top:1px solid var(--border);text-align:center">
+      <h2>Give your agents infrastructure.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Open source. Self-hostable. Hosted service available. Production-ready.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem">
+        <a href="https://github.com/siriusmcp" style="background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:500">View on GitHub</a>
+        <a href="memory.html" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem">Start with Memory →</a>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
       <p>Sirius MCP Suite — Universal agent infrastructure via the Model Context Protocol</p>
-      <p style="margin-top:0.5rem"><a href="https://github.com/siriusmcp" style="color:var(--accent);text-decoration:none">GitHub</a></p>
+      <p style="margin-top:0.5rem"><a href="https://github.com/siriusmcp" style="color:var(--accent);text-decoration:none">GitHub</a> · <a href="https://siriusmemory.com" style="color:var(--text-muted);text-decoration:none">siriusmemory.com</a></p>
     </footer>
   </div>
 
   <script src="js/constellation.js"></script>
+  <style>@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }</style>
 </body>
 </html>
