@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirius Flow — Project State & Work Continuity</title>
+  <meta name="description" content="Project tracking and session continuity for AI agents. Task dependencies, checkpoints, handoffs — seamless resumption across sessions and agents.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2360a5fa'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2360a5fa' stroke-width='0.5' opacity='0.5'/></svg>">
+</head>
+<body>
+  <canvas id="constellation-bg"></canvas>
+  <div class="content">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-brand">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#60a5fa"/><circle cx="12" cy="12" r="6" stroke="#60a5fa" stroke-width="0.7" opacity="0.6"/><circle cx="12" cy="12" r="10" stroke="#60a5fa" stroke-width="0.4" opacity="0.3"/></svg>
+          Sirius MCP
+        </a>
+        <ul class="nav-links">
+          <li><a href="/">Suite</a></li>
+          <li><a href="memory.html">Memory</a></li>
+          <li><a href="hive.html">Hive</a></li>
+          <li><a href="flow.html" class="active">Flow</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero" style="min-height:60vh">
+      <h1><span style="color:var(--purple)">◆</span> Sirius <span class="gradient-text">Flow</span></h1>
+      <p class="subtitle">Project state and work continuity. One tool call at session start gives the agent everything — what's done, what's next, what was decided, and where to resume.</p>
+    </section>
+
+    <section class="section">
+      <h2>The Problem</h2>
+      <p class="lead">Agents lose all context between sessions. Every new chat starts from zero — re-reading files, re-discovering state, re-making decisions. Flow fixes this.</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>One-Call Cold Start</h3>
+          <p><code>flow_session_start</code> returns the full project state: last checkpoint, pending handoffs, task list, recent decisions, and what to do next.</p>
+        </div>
+        <div class="product-card">
+          <h3>Dependency DAG</h3>
+          <p>Tasks have dependencies. Completing one automatically unblocks its dependents. The agent always knows what's ready to work on.</p>
+        </div>
+        <div class="product-card">
+          <h3>Dual Continuity</h3>
+          <p>Checkpoints for machine resumption (exact state). Handoffs for agent briefing (human-readable context). Different purposes, both essential.</p>
+        </div>
+        <div class="product-card">
+          <h3>Suite Awareness</h3>
+          <p>Flow signals when Memory should be updated and when Hive could parallelize. No coupling — just helpful hints the agent can act on.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>MCP Tools (15)</h2>
+      <div style="overflow-x:auto">
+        <table class="tool-table">
+          <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>flow_project_create</code></td><td>Create a project for tracked work</td></tr>
+            <tr><td><code>flow_project_list</code></td><td>List all projects (filter by status)</td></tr>
+            <tr><td><code>flow_project_complete</code></td><td>Archive and promote learnings to Memory</td></tr>
+            <tr><td><code>flow_task_add</code></td><td>Add task with dependencies (cycle detection)</td></tr>
+            <tr><td><code>flow_task_update</code></td><td>Update status — returns unblocked tasks</td></tr>
+            <tr><td><code>flow_task_list</code></td><td>View tasks (filter by status, ready-only)</td></tr>
+            <tr><td><code>flow_task_next</code></td><td>Get next task respecting dependencies + priority</td></tr>
+            <tr><td><code>flow_checkpoint_save</code></td><td>Save machine-resumable state snapshot</td></tr>
+            <tr><td><code>flow_checkpoint_load</code></td><td>Load latest checkpoint</td></tr>
+            <tr><td><code>flow_handoff_create</code></td><td>Brief the next agent/session</td></tr>
+            <tr><td><code>flow_handoff_receive</code></td><td>Read pending briefings (marks as consumed)</td></tr>
+            <tr><td><code>flow_session_start</code></td><td>One-call cold start — everything you need</td></tr>
+            <tr><td><code>flow_session_end</code></td><td>Atomic wrap-up (checkpoint + handoff)</td></tr>
+            <tr><td><code>flow_decision_record</code></td><td>Log a decision with reasoning</td></tr>
+            <tr><td><code>flow_decision_list</code></td><td>View decision history (supersession tracking)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Session Lifecycle</h2>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:monospace;font-size:0.85rem;overflow-x:auto">
+        <div style="color:var(--text-muted)">// Session starts — one call, full context</div>
+        flow_session_start(project_id, agent_id="me")<br>
+        <span style="color:var(--text-muted)">→ { task_summary, next_task, last_checkpoint, pending_handoffs, suite_hints }</span><br><br>
+        <div style="color:var(--text-muted)">// Work — task updates unblock dependents</div>
+        flow_task_update(task_id, status="completed", artifacts=["PR #12"])<br>
+        <span style="color:var(--text-muted)">→ { unblocked: ["task-uuid-now-ready"] }</span><br><br>
+        <div style="color:var(--text-muted)">// Session ends — atomic checkpoint + handoff</div>
+        flow_session_end(project_id, summary="Built auth layer", next_actions=[...])<br>
+        <span style="color:var(--text-muted)">→ { percent_complete: 67.5, promote_to_memory: [...] }</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p><a href="https://github.com/siriusmcp/sirius-flow" style="color:var(--accent);text-decoration:none">View on GitHub →</a></p>
+    </footer>
+  </div>
+  <script src="js/constellation.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirius Memory — Persistent Memory for AI Agents</title>
+  <meta name="description" content="Three-layer persistent memory system. Trust-scored facts, semantic search, behavioral directives — shared across all your machines and sessions.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2360a5fa'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2360a5fa' stroke-width='0.5' opacity='0.5'/></svg>">
+</head>
+<body>
+  <canvas id="constellation-bg"></canvas>
+  <div class="content">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-brand">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#60a5fa"/><circle cx="12" cy="12" r="6" stroke="#60a5fa" stroke-width="0.7" opacity="0.6"/><circle cx="12" cy="12" r="10" stroke="#60a5fa" stroke-width="0.4" opacity="0.3"/></svg>
+          Sirius MCP
+        </a>
+        <ul class="nav-links">
+          <li><a href="/">Suite</a></li>
+          <li><a href="memory.html" class="active">Memory</a></li>
+          <li><a href="hive.html">Hive</a></li>
+          <li><a href="flow.html">Flow</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero" style="min-height:60vh">
+      <h1><span style="color:var(--emerald)">◆</span> Sirius <span class="gradient-text">Memory</span></h1>
+      <p class="subtitle">Three-layer persistent memory that gives any AI agent cross-session recall, trust-scored facts, and semantic search — shared across all your machines.</p>
+    </section>
+
+    <section class="section">
+      <h2>Architecture</h2>
+      <p class="lead">Three layers working together, each serving a different recall pattern.</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>Layer 1 — File Memory</h3>
+          <p>Always-on context injected every turn. User profile, project context, system preferences. Never needs retrieval — it's always there.</p>
+        </div>
+        <div class="product-card">
+          <h3>Layer 2 — Holographic Facts</h3>
+          <p>Entity-linked facts with trust scores. Decay when unhelpful, strengthen when confirmed. Cross-entity reasoning connects related knowledge.</p>
+        </div>
+        <div class="product-card">
+          <h3>Layer 3 — Vector Search</h3>
+          <p>Semantic recall over ingested documents and past sessions. Finds relevant context even when you don't know the exact keywords.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>MCP Tools (14)</h2>
+      <div style="overflow-x:auto">
+        <table class="tool-table">
+          <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>sirius_context</code></td><td>Full context assembly — all layers in one call</td></tr>
+            <tr><td><code>sirius_remember</code></td><td>Store always-on file memory (L1)</td></tr>
+            <tr><td><code>sirius_fact_add</code></td><td>Store a trust-scored fact with entity links (L2)</td></tr>
+            <tr><td><code>sirius_fact_probe</code></td><td>Query all facts about a specific entity</td></tr>
+            <tr><td><code>sirius_fact_search</code></td><td>Keyword search across all facts</td></tr>
+            <tr><td><code>sirius_fact_reason</code></td><td>Cross-entity reasoning — facts connecting multiple entities</td></tr>
+            <tr><td><code>sirius_fact_feedback</code></td><td>Rate a fact helpful/unhelpful — trains trust</td></tr>
+            <tr><td><code>sirius_recall</code></td><td>Semantic vector search over documents and sessions (L3)</td></tr>
+            <tr><td><code>sirius_directive_add</code></td><td>Create a scoped behavioral rule</td></tr>
+            <tr><td><code>sirius_directive_list</code></td><td>List active directives for a scope</td></tr>
+            <tr><td><code>sirius_contradict</code></td><td>Surface and resolve conflicting facts</td></tr>
+            <tr><td><code>sirius_ingest</code></td><td>Ingest a document into vector memory</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Key Features</h2>
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <div class="product-card">
+          <h3>Trust System</h3>
+          <p>Facts gain trust when confirmed, lose it when irrelevant. High-trust facts surface first. Low-trust decay naturally.</p>
+        </div>
+        <div class="product-card">
+          <h3>Cross-Machine Sharing</h3>
+          <p>One memory pool shared across all your development machines. What you teach on one laptop is available everywhere.</p>
+        </div>
+        <div class="product-card">
+          <h3>Contradiction Detection</h3>
+          <p>When conflicting facts are found, they surface for explicit resolution rather than silently using stale data.</p>
+        </div>
+        <div class="product-card">
+          <h3>Behavioral Directives</h3>
+          <p>Standing rules scoped to topics. "Always use pytest-asyncio strict mode in this project" — enforced automatically.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p><a href="https://github.com/siriusmcp/sirius-memory" style="color:var(--accent);text-decoration:none">View on GitHub →</a></p>
+    </footer>
+  </div>
+  <script src="js/constellation.js"></script>
+</body>
+</html>

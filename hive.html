@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirius Hive — Multi-Agent Coordination</title>
+  <meta name="description" content="Real-time coordination bus for concurrent AI agents. Conventions, scratchpad, decisions, conflict resolution — session-scoped shared state.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2360a5fa'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2360a5fa' stroke-width='0.5' opacity='0.5'/></svg>">
+</head>
+<body>
+  <canvas id="constellation-bg"></canvas>
+  <div class="content">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-brand">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#60a5fa"/><circle cx="12" cy="12" r="6" stroke="#60a5fa" stroke-width="0.7" opacity="0.6"/><circle cx="12" cy="12" r="10" stroke="#60a5fa" stroke-width="0.4" opacity="0.3"/></svg>
+          Sirius MCP
+        </a>
+        <ul class="nav-links">
+          <li><a href="/">Suite</a></li>
+          <li><a href="memory.html">Memory</a></li>
+          <li><a href="hive.html" class="active">Hive</a></li>
+          <li><a href="flow.html">Flow</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero" style="min-height:60vh">
+      <h1><span style="color:var(--accent)">◆</span> Sirius <span class="gradient-text">Hive</span></h1>
+      <p class="subtitle">Real-time coordination bus for concurrent agents. Conventions, shared scratchpad, decisions, conflict resolution — session-scoped, no polling, zero setup.</p>
+    </section>
+
+    <section class="section">
+      <h2>How It Works</h2>
+      <p class="lead">Orchestrator front-loads conventions, agents join and follow. Reduces multi-agent coordination from distributed consensus to read-the-spec-and-follow.</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <h3>Conventions</h3>
+          <p>Immutable rules validated at check time. Set naming styles, error shapes, API patterns — agents validate before committing.</p>
+        </div>
+        <div class="product-card">
+          <h3>Scratchpad</h3>
+          <p>Shared key-value store with namespace protection. Agents publish interfaces, read each other's output, append to shared lists.</p>
+        </div>
+        <div class="product-card">
+          <h3>Decisions</h3>
+          <p>Audit trail of implementation choices. Every agent records what they decided and why — prevents re-litigation.</p>
+        </div>
+        <div class="product-card">
+          <h3>Conflicts</h3>
+          <p>Structured issue tracking within a session. Agents flag inconsistencies; orchestrator resolves. Nothing gets silently swallowed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>MCP Tools (18)</h2>
+      <div style="overflow-x:auto">
+        <table class="tool-table">
+          <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>hive_session_create</code></td><td>Create a coordination session</td></tr>
+            <tr><td><code>hive_session_join</code></td><td>Join and receive full state snapshot</td></tr>
+            <tr><td><code>hive_session_checkin</code></td><td>Lifecycle signal (started/completed/blocked)</td></tr>
+            <tr><td><code>hive_session_seal</code></td><td>Seal session (read-only)</td></tr>
+            <tr><td><code>hive_session_status</code></td><td>Check state without joining</td></tr>
+            <tr><td><code>hive_session_extend</code></td><td>Extend TTL</td></tr>
+            <tr><td><code>hive_session_history</code></td><td>Full event log for audit</td></tr>
+            <tr><td><code>hive_convention_set</code></td><td>Establish an immutable rule</td></tr>
+            <tr><td><code>hive_convention_check</code></td><td>Validate a value against rules</td></tr>
+            <tr><td><code>hive_convention_check_batch</code></td><td>Validate multiple values at once</td></tr>
+            <tr><td><code>hive_convention_list</code></td><td>List all active conventions</td></tr>
+            <tr><td><code>hive_scratch_write</code></td><td>Write to shared scratchpad</td></tr>
+            <tr><td><code>hive_scratch_read</code></td><td>Read from scratchpad (key or prefix)</td></tr>
+            <tr><td><code>hive_scratch_append</code></td><td>Append to a list-valued key</td></tr>
+            <tr><td><code>hive_decision_record</code></td><td>Record an implementation decision</td></tr>
+            <tr><td><code>hive_conflict_raise</code></td><td>Flag an inconsistency</td></tr>
+            <tr><td><code>hive_conflict_resolve</code></td><td>Resolve with explanation</td></tr>
+            <tr><td><code>hive_conflict_list</code></td><td>List open/resolved conflicts</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Convention Validation</h2>
+      <p class="lead">The killer feature. Agents check proposed names against established patterns before committing — violations get caught with suggested fixes.</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:monospace;font-size:0.85rem;overflow-x:auto">
+        <div style="color:var(--text-muted)">// Set convention</div>
+        hive_convention_set(category="casing", rule="snake_case for all identifiers", immutable=true)<br><br>
+        <div style="color:var(--text-muted)">// Agent checks before naming</div>
+        hive_convention_check(category="casing", proposed="getUserProfile")<br><br>
+        <div style="color:var(--text-muted)">// Response:</div>
+        <span style="color:#ef4444">{ status: "conflict"</span>, suggested_fix: <span style="color:var(--emerald)">"get_user_profile"</span> }
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p><a href="https://github.com/siriusmcp/sirius-hive" style="color:var(--accent);text-decoration:none">View on GitHub →</a></p>
+    </footer>
+  </div>
+  <script src="js/constellation.js"></script>
+</body>
+</html>
