@@ -96,9 +96,9 @@
     const starMap = {};
     for (const s of stars) starMap[s.id] = s;
 
-    ctx.strokeStyle = 'rgba(100, 180, 255, 0.15)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 6]);
+    ctx.strokeStyle = 'rgba(140, 200, 255, 0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([3, 5]);
 
     for (const [from, to] of lines) {
       const a = getStarPos(starMap[from]);
