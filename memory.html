@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sirius Memory — Persistent Memory for AI Agents</title>
-  <meta name="description" content="Three-layer persistent memory system. Trust-scored facts, semantic search, behavioral directives — shared across all your machines and sessions.">
+  <meta name="description" content="Three-layer persistent memory system for AI agents. Cross-session recall, trust-scored facts, and semantic search — shared across all your machines.">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2360a5fa'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2360a5fa' stroke-width='0.5' opacity='0.5'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2310b981'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2310b981' stroke-width='0.5' opacity='0.5'/></svg>">
 </head>
 <body>
   <canvas id="constellation-bg"></canvas>
+
   <div class="content">
+    <!-- Navigation -->
     <nav class="nav">
       <div class="nav-inner">
         <a href="/" class="nav-brand">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="#60a5fa"/><circle cx="12" cy="12" r="6" stroke="#60a5fa" stroke-width="0.7" opacity="0.6"/><circle cx="12" cy="12" r="10" stroke="#60a5fa" stroke-width="0.4" opacity="0.3"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" fill="#60a5fa"/>
+            <circle cx="12" cy="12" r="6" stroke="#60a5fa" stroke-width="0.7" opacity="0.6"/>
+            <circle cx="12" cy="12" r="10" stroke="#60a5fa" stroke-width="0.4" opacity="0.3"/>
+          </svg>
           Sirius MCP
         </a>
         <ul class="nav-links">
@@ -26,80 +32,244 @@
       </div>
     </nav>
 
-    <section class="hero" style="min-height:60vh">
-      <h1><span style="color:var(--emerald)">◆</span> Sirius <span class="gradient-text">Memory</span></h1>
-      <p class="subtitle">Three-layer persistent memory that gives any AI agent cross-session recall, trust-scored facts, and semantic search — shared across all your machines.</p>
+    <!-- Hero -->
+    <section class="hero">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:99px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-muted);margin-bottom:2rem">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite"></span>
+        14 MCP Tools · Open Source · Self-Hostable
+      </div>
+      <h1>Your AI agents<br><span class="gradient-text" style="background:linear-gradient(135deg, var(--emerald), var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">remember everything.</span></h1>
+      <p class="subtitle">
+        A three-layer persistent memory system that gives AI agents durable recall
+        across sessions, machines, and frameworks. Facts accumulate. Context persists.
+        Trust evolves.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+        <a href="#integration" style="background:rgba(16,185,129,0.15);border:1px solid var(--emerald);color:var(--emerald);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:500">Get Started →</a>
+        <a href="https://github.com/siriusmcp/sirius-memory" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem">GitHub ↗</a>
+      </div>
     </section>
 
-    <section class="section">
-      <h2>Architecture</h2>
-      <p class="lead">Three layers working together, each serving a different recall pattern.</p>
+    <!-- Three Layers -->
+    <section class="section" id="layers" style="border-top:1px solid var(--border)">
+      <h2>Three Layers of Memory</h2>
+      <p class="lead">Each layer serves a distinct purpose, working together to give agents comprehensive, contextual recall without flooding the prompt.</p>
 
       <div class="product-grid">
-        <div class="product-card">
+        <div class="product-card" style="border-color:rgba(16,185,129,0.2)">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="1.5"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a8.25 8.25 0 0 1 15 0"/></svg>
+          </div>
           <h3>Layer 1 — File Memory</h3>
-          <p>Always-on context injected every turn. User profile, project context, system preferences. Never needs retrieval — it's always there.</p>
+          <p>Always-on identity context. User profile, project state, system preferences — injected every turn without being asked. The agent knows who you are before you speak. Budget-managed with automatic compaction at 80% capacity.</p>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+            <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em">Always injected · 3000 token budget</span>
+          </div>
         </div>
-        <div class="product-card">
+
+        <div class="product-card" style="border-color:rgba(6,182,212,0.2)">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(6,182,212,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.26 8.071l-.457 1.599a2.25 2.25 0 0 1-1.544 1.544l-1.599.457 1.599.457a2.25 2.25 0 0 1 1.544 1.544l.457 1.599.457-1.599a2.25 2.25 0 0 1 1.544-1.544l1.599-.457-1.599-.457a2.25 2.25 0 0 1-1.544-1.544l-.457-1.599Z"/></svg>
+          </div>
           <h3>Layer 2 — Holographic Facts</h3>
-          <p>Entity-linked facts with trust scores. Decay when unhelpful, strengthen when confirmed. Cross-entity reasoning connects related knowledge.</p>
+          <p>Entity-linked knowledge with trust scoring. Decisions, preferences, relationships — each fact carries confidence that evolves with feedback. Better facts surface higher. Includes contradiction detection and entity resolution.</p>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+            <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em">Trust-ranked retrieval · starts at 0.7</span>
+          </div>
         </div>
-        <div class="product-card">
-          <h3>Layer 3 — Vector Search</h3>
-          <p>Semantic recall over ingested documents and past sessions. Finds relevant context even when you don't know the exact keywords.</p>
+
+        <div class="product-card" style="border-color:rgba(167,139,250,0.2)">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(167,139,250,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5"><path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+          </div>
+          <h3>Layer 3 — Vector Recall</h3>
+          <p>Semantic search over ingested documents and past sessions. Ask a natural-language question, get the most relevant fragments — regardless of when they were stored. Hybrid search with RRF fusion for best results.</p>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+            <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em">Semantic similarity · pgvector cosine</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>MCP Tools (14)</h2>
-      <div style="overflow-x:auto">
+    <!-- Features Grid -->
+    <section class="section" id="features" style="border-top:1px solid var(--border)">
+      <h2>Built for Real-World Agents</h2>
+      <p class="lead">Not a demo. A production memory layer designed for reliability, speed, and the messy reality of multi-session agent work.</p>
+
+      <div class="product-grid" style="grid-template-columns:repeat(auto-fit, minmax(280px, 1fr))">
+        <div class="product-card">
+          <h3 style="font-size:1.1rem"><span style="color:var(--emerald)">⟳</span> Cross-Machine Sync</h3>
+          <p>Store a fact on your laptop. See it on your server. Shared memory pool across all your agents and machines — no sync conflicts, no manual setup. One API key, every device.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="font-size:1.1rem"><span style="color:var(--emerald)">△</span> Adaptive Trust</h3>
+          <p>Facts earn trust through use. Helpful knowledge rises (+0.05). Outdated or wrong facts decay (-0.10). The system learns which memories matter — dormant facts can be resurrected with a +0.15 boost.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="font-size:1.1rem"><span style="color:var(--emerald)">⊕</span> Scoped Directives</h3>
+          <p>Standing rules that apply only when relevant. "Always use snake_case" fires in Python sessions, not markdown editing. 15+ valid scopes: python, typescript, sql, api_design, architecture, testing, and more.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="font-size:1.1rem"><span style="color:var(--emerald)">↻</span> Offline Resilience (WAL)</h3>
+          <p>Write-ahead log queues operations when the service is unreachable. Drains automatically on reconnection. No data lost, no user intervention needed. Works behind firewalls and in air-gapped environments.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="font-size:1.1rem"><span style="color:var(--emerald)">◎</span> Budget-Managed Context</h3>
+          <p>One API call assembles all layers into a token-budgeted block. L1 file memories (3000 tokens), relevant L2 facts, L3 vector hits, and active directives — all deduplicated and prioritized. No prompt overflow.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="font-size:1.1rem"><span style="color:var(--emerald)">⚡</span> Contradiction Detection</h3>
+          <p>New facts are checked against existing knowledge. Conflicts surface for human resolution — the system never silently overwrites what it knows. Resolution options: keep, supersede, or archive.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tool Table -->
+    <section class="section" id="tools" style="border-top:1px solid var(--border)">
+      <h2>Complete Tool Reference</h2>
+      <p class="lead">14 MCP tools covering context assembly, fact management, vector search, behavioral directives, and document ingestion.</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;overflow-x:auto">
         <table class="tool-table">
-          <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+          <thead>
+            <tr><th>Tool</th><th>Layer</th><th>Description</th></tr>
+          </thead>
           <tbody>
-            <tr><td><code>sirius_context</code></td><td>Full context assembly — all layers in one call</td></tr>
-            <tr><td><code>sirius_remember</code></td><td>Store always-on file memory (L1)</td></tr>
-            <tr><td><code>sirius_fact_add</code></td><td>Store a trust-scored fact with entity links (L2)</td></tr>
-            <tr><td><code>sirius_fact_probe</code></td><td>Query all facts about a specific entity</td></tr>
-            <tr><td><code>sirius_fact_search</code></td><td>Keyword search across all facts</td></tr>
-            <tr><td><code>sirius_fact_reason</code></td><td>Cross-entity reasoning — facts connecting multiple entities</td></tr>
-            <tr><td><code>sirius_fact_feedback</code></td><td>Rate a fact helpful/unhelpful — trains trust</td></tr>
-            <tr><td><code>sirius_recall</code></td><td>Semantic vector search over documents and sessions (L3)</td></tr>
-            <tr><td><code>sirius_directive_add</code></td><td>Create a scoped behavioral rule</td></tr>
-            <tr><td><code>sirius_directive_list</code></td><td>List active directives for a scope</td></tr>
-            <tr><td><code>sirius_contradict</code></td><td>Surface and resolve conflicting facts</td></tr>
-            <tr><td><code>sirius_ingest</code></td><td>Ingest a document into vector memory</td></tr>
+            <tr><td><code>sirius_context</code></td><td>All</td><td>Assemble all memory layers into a single token-budgeted context block. Call at the start of every turn.</td></tr>
+            <tr><td><code>sirius_remember</code></td><td>L1</td><td>Add an always-on file memory entry (user profile, project context, system preferences).</td></tr>
+            <tr><td><code>sirius_fact_add</code></td><td>L2</td><td>Store a holographic fact with entity linking, category, trust score, and automatic contradiction checks.</td></tr>
+            <tr><td><code>sirius_fact_probe</code></td><td>L2</td><td>Query facts about a specific entity. Returns active facts above trust threshold, ordered by confidence.</td></tr>
+            <tr><td><code>sirius_fact_search</code></td><td>L2</td><td>Keyword search across all facts. Substring matching including dormant (low-trust) results.</td></tr>
+            <tr><td><code>sirius_fact_reason</code></td><td>L2</td><td>Cross-entity compositional reasoning. Find facts where ALL specified entities co-occur.</td></tr>
+            <tr><td><code>sirius_fact_feedback</code></td><td>L2</td><td>Submit trust feedback (helpful/unhelpful) after using a recalled fact. Trains the trust system.</td></tr>
+            <tr><td><code>sirius_recall</code></td><td>L3</td><td>Semantic vector search over past sessions and ingested documents. Hybrid search with RRF fusion.</td></tr>
+            <tr><td><code>sirius_directive_add</code></td><td>Dir</td><td>Create a scoped behavioral directive (standing rule). Applied automatically in matching contexts.</td></tr>
+            <tr><td><code>sirius_directive_list</code></td><td>Dir</td><td>List active directives, optionally filtered by scope. Returns rules in effect for a given context.</td></tr>
+            <tr><td><code>sirius_contradict</code></td><td>L2</td><td>Surface and resolve fact contradictions. List conflicts or resolve with keep/supersede/archive.</td></tr>
+            <tr><td><code>sirius_ingest</code></td><td>L3</td><td>Ingest a document or session transcript. Chunks, embeds, and stores for future semantic recall.</td></tr>
           </tbody>
         </table>
       </div>
+
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:1.5rem">Plus <code style="color:var(--emerald);background:var(--bg-elevated);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.8rem">sirius_remember</code> targets: "user", "system", "project" · <code style="color:var(--emerald);background:var(--bg-elevated);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.8rem">sirius_fact_add</code> categories: user_pref, project, tool, general</p>
     </section>
 
-    <section class="section">
-      <h2>Key Features</h2>
-      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-        <div class="product-card">
-          <h3>Trust System</h3>
-          <p>Facts gain trust when confirmed, lose it when irrelevant. High-trust facts surface first. Low-trust decay naturally.</p>
+    <!-- Integration -->
+    <section class="section" id="integration" style="border-top:1px solid var(--border)">
+      <h2>Integration</h2>
+      <p class="lead">Add to your platform's MCP config. The agent gets persistent memory immediately. Works with any framework that speaks MCP.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(400px, 1fr));gap:2rem;align-items:start">
+        <div>
+          <h3 style="font-size:1.1rem;margin-bottom:1rem;color:var(--text)">MCP Server Config</h3>
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;font-family:monospace;font-size:0.82rem;color:var(--text-muted);overflow-x:auto">
+            <div style="color:var(--emerald)">// Add to mcp.json or platform config</div>
+            <br>
+            {<br>
+            &nbsp;&nbsp;"mcpServers": {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--emerald)">"sirius-memory"</span>: {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python3",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"args": ["-m", "sirius_memory.mcp"],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"env": {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--cyan)">"SIRIUS_API_KEY"</span>: "sm_live_..."<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;}<br>
+            }
+          </div>
         </div>
-        <div class="product-card">
-          <h3>Cross-Machine Sharing</h3>
-          <p>One memory pool shared across all your development machines. What you teach on one laptop is available everywhere.</p>
-        </div>
-        <div class="product-card">
-          <h3>Contradiction Detection</h3>
-          <p>When conflicting facts are found, they surface for explicit resolution rather than silently using stale data.</p>
-        </div>
-        <div class="product-card">
-          <h3>Behavioral Directives</h3>
-          <p>Standing rules scoped to topics. "Always use pytest-asyncio strict mode in this project" — enforced automatically.</p>
+
+        <div>
+          <h3 style="font-size:1.1rem;margin-bottom:1rem;color:var(--text)">Deployment Options</h3>
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div class="product-card" style="padding:1.25rem">
+              <h3 style="font-size:1rem;margin-bottom:0.5rem">🖥️ Self-Hosted (Embedded)</h3>
+              <p style="font-size:0.85rem">In-process MCP server. Clone the repo, pip install, run. Data stays local in SQLite + pgvector. Zero network dependency.</p>
+            </div>
+            <div class="product-card" style="padding:1.25rem">
+              <h3 style="font-size:1rem;margin-bottom:0.5rem">☁️ Hosted API</h3>
+              <p style="font-size:0.85rem">Managed service at <span style="color:var(--emerald)">api.siriusmemory.com</span>. Multi-tenant, API key auth, automatic backups, zero-knowledge encryption. Set env var and go.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Architecture Diagram -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2 style="text-align:center">One Memory, Every Machine</h2>
+      <p class="lead" style="text-align:center;margin-left:auto;margin-right:auto">All your agents share the same memory pool. A fact stored on Machine A is available on Machine B next turn.</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2.5rem;font-family:monospace;font-size:0.85rem;color:var(--text-muted);max-width:700px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem">
+          <div style="border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+            <div style="color:var(--text);font-weight:500">💻 Laptop</div>
+            <div style="font-size:0.75rem;margin-top:0.25rem">Cursor + MCP</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+            <div style="color:var(--text);font-weight:500">🖥️ Server</div>
+            <div style="font-size:0.75rem;margin-top:0.25rem">KiroCrew + MCP</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+            <div style="color:var(--text);font-weight:500">🏢 Workstation</div>
+            <div style="font-size:0.75rem;margin-top:0.25rem">Claude Code + MCP</div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-bottom:1.5rem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="1.5" style="display:inline-block"><path d="M12 4.5v15m0 0-6.75-6.75M12 19.5l6.75-6.75"/></svg>
+        </div>
+
+        <div style="border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:1.5rem;background:rgba(16,185,129,0.04);text-align:center">
+          <div style="color:var(--emerald);font-weight:600;font-size:1.1rem">Sirius Memory API</div>
+          <div style="font-size:0.8rem;margin-top:0.5rem;color:var(--text-muted)">L1 File Memory · L2 Holographic Facts · L3 Vector Recall · Directives</div>
+          <div style="font-size:0.75rem;margin-top:0.75rem;color:var(--emerald);opacity:0.7">api.siriusmemory.com — or self-hosted on your own infrastructure</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" style="border-top:1px solid var(--border)">
+      <h2>How Memory Works</h2>
+      <p class="lead">Every turn follows the same three-step pattern. One call in, work happens, facts out.</p>
+
+      <div class="product-grid" style="grid-template-columns:repeat(auto-fit, minmax(280px, 1fr))">
+        <div class="product-card">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;color:var(--emerald)">①</div>
+          <h3 style="font-size:1.1rem">Retrieve</h3>
+          <p>Agent calls <code style="color:var(--emerald);background:var(--bg-elevated);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem">sirius_context</code> at the start of every turn. Gets back L1 identity, relevant L2 facts, L3 vector hits, and active directives — all within token budget.</p>
+        </div>
+        <div class="product-card">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;color:var(--cyan)">②</div>
+          <h3 style="font-size:1.1rem">Work</h3>
+          <p>Agent uses the context to inform its response. Probes specific entities with <code style="color:var(--emerald);background:var(--bg-elevated);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem">fact_probe</code>. Searches for related knowledge. Follows active directives.</p>
+        </div>
+        <div class="product-card">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;color:var(--purple)">③</div>
+          <h3 style="font-size:1.1rem">Store</h3>
+          <p>Agent saves new facts (<code style="color:var(--emerald);background:var(--bg-elevated);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.85rem">fact_add</code>), submits trust feedback, and creates directives from corrections. Memory grows with every session.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="border-top:1px solid var(--border);text-align:center">
+      <h2>Give your agents a brain.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Open source. Self-hostable. Hosted service available. Production-ready today.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem">
+        <a href="https://github.com/siriusmcp/sirius-memory" style="background:rgba(16,185,129,0.15);border:1px solid var(--emerald);color:var(--emerald);padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:500">View on GitHub</a>
+        <a href="https://www.siriusmemory.com" style="color:var(--text-muted);padding:0.75rem 1.5rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:0.9rem">siriusmemory.com ↗</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-      <p><a href="https://github.com/siriusmcp/sirius-memory" style="color:var(--accent);text-decoration:none">View on GitHub →</a></p>
+      <p>Sirius Memory — Persistent memory for AI agents via the Model Context Protocol</p>
+      <p style="margin-top:0.5rem"><a href="https://github.com/siriusmcp/sirius-memory" style="color:var(--emerald);text-decoration:none">GitHub</a> · <a href="https://siriusmemory.com" style="color:var(--text-muted);text-decoration:none">siriusmemory.com</a> · <a href="/" style="color:var(--text-muted);text-decoration:none">Sirius MCP Suite</a></p>
     </footer>
   </div>
+
   <script src="js/constellation.js"></script>
+  <style>@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }</style>
 </body>
 </html>

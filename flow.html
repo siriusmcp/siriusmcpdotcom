@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sirius Flow — Project State & Work Continuity</title>
-  <meta name="description" content="Project tracking and session continuity for AI agents. Task dependencies, checkpoints, handoffs — seamless resumption across sessions and agents.">
+  <title>Sirius Flow — Project State & Work Continuity for AI Agents</title>
+  <meta name="description" content="Project management and session continuity for AI agents. Task dependencies with DAG resolution, checkpoints, handoffs, and suite-aware signals — seamless resumption across sessions.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3' fill='%2360a5fa'/><circle cx='12' cy='12' r='6' fill='none' stroke='%2360a5fa' stroke-width='0.5' opacity='0.5'/></svg>">
 </head>
@@ -26,78 +26,201 @@
       </div>
     </nav>
 
+    <!-- Hero -->
     <section class="hero" style="min-height:60vh">
       <h1><span style="color:var(--purple)">◆</span> Sirius <span class="gradient-text">Flow</span></h1>
-      <p class="subtitle">Project state and work continuity. One tool call at session start gives the agent everything — what's done, what's next, what was decided, and where to resume.</p>
+      <p class="subtitle">Project state and work continuity. One tool call at session start gives the agent everything it needs — what's done, what's next, what was decided, and exactly where to resume. No re-reading. No re-discovery. No lost work.</p>
     </section>
 
+    <!-- The Problem -->
     <section class="section">
       <h2>The Problem</h2>
-      <p class="lead">Agents lose all context between sessions. Every new chat starts from zero — re-reading files, re-discovering state, re-making decisions. Flow fixes this.</p>
+      <p class="lead">Every new chat session starts from absolute zero. The agent re-reads files, re-discovers project state, re-makes decisions that were already settled, and often contradicts work done in prior sessions. Context doesn't carry forward — it evaporates.</p>
 
-      <div class="product-grid">
-        <div class="product-card">
-          <h3>One-Call Cold Start</h3>
-          <p><code>flow_session_start</code> returns the full project state: last checkpoint, pending handoffs, task list, recent decisions, and what to do next.</p>
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="product-card" style="border-left: 3px solid #ef4444;">
+          <h3>Session Amnesia</h3>
+          <p>An agent builds half a feature, the session ends, the next one starts fresh. All progress tracking, decision context, and file locations — gone.</p>
         </div>
-        <div class="product-card">
-          <h3>Dependency DAG</h3>
-          <p>Tasks have dependencies. Completing one automatically unblocks its dependents. The agent always knows what's ready to work on.</p>
+        <div class="product-card" style="border-left: 3px solid #ef4444;">
+          <h3>Decision Replay</h3>
+          <p>The same architectural choice gets re-debated across sessions. Without a record of what was decided and why, agents oscillate between approaches.</p>
         </div>
-        <div class="product-card">
-          <h3>Dual Continuity</h3>
-          <p>Checkpoints for machine resumption (exact state). Handoffs for agent briefing (human-readable context). Different purposes, both essential.</p>
-        </div>
-        <div class="product-card">
-          <h3>Suite Awareness</h3>
-          <p>Flow signals when Memory should be updated and when Hive could parallelize. No coupling — just helpful hints the agent can act on.</p>
+        <div class="product-card" style="border-left: 3px solid #ef4444;">
+          <h3>No Handoff Protocol</h3>
+          <p>When a different agent or session picks up the work, there's no structured briefing — just a bare project directory and hope.</p>
         </div>
       </div>
     </section>
 
+    <!-- The Solution -->
+    <section class="section">
+      <h2>The Solution</h2>
+      <p class="lead">Flow is the project management layer for agents — task-scoped, noisy when active, archived when done. It tracks where things live, what's complete, what's next, and ensures seamless transitions between sessions.</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <h3 style="color:var(--purple)">One-Call Cold Start</h3>
+          <p><code>flow_session_start</code> returns the full project snapshot in a single call: last checkpoint, pending handoffs, task list with readiness, recent decisions, and suite hints. Zero warm-up time.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--purple)">Dependency DAG</h3>
+          <p>Tasks declare dependencies. Flow builds a directed acyclic graph with cycle detection. Completing a task triggers an unblocking cascade — dependents automatically become ready.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--purple)">Dual Continuity</h3>
+          <p>Checkpoints save machine-resumable state (exact variables, file positions). Handoffs create agent-readable briefings (context, decisions, what's pending). Different purposes, both essential.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--purple)">Suite Awareness</h3>
+          <p><code>suite_hints</code> signals when Memory should be updated and when Hive could parallelize. No coupling — just structured hints the agent can act on or ignore.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Session Lifecycle Demo -->
+    <section class="section">
+      <h2>Session Lifecycle</h2>
+      <p class="lead">The complete work loop — cold start to clean finish — in three calls.</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.82rem;overflow-x:auto;line-height:1.8">
+        <div style="color:var(--purple);font-weight:600">// 1. Cold start — one call, full context</div>
+        <span style="color:var(--text)">result = flow_session_start(project_id=</span><span style="color:var(--emerald)">"proj-auth-layer"</span><span style="color:var(--text)">, agent_id=</span><span style="color:var(--emerald)">"agent-7"</span><span style="color:var(--text)">)</span><br>
+        <span style="color:var(--text-muted)">→ {</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;task_summary: { total: 8, completed: 3, in_progress: 1, blocked: 2, ready: 2 },</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;next_task: { id: "task-005", title: "Implement JWT refresh", priority: 1 },</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;last_checkpoint: { saved_at: "2026-08-11T14:30:00Z", data: {...} },</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;pending_handoffs: [{ from: "agent-3", summary: "Auth DB schema is done..." }],</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;suite_hints: { parallel_tasks: 2, promote_pending: 1 }</span><br>
+        <span style="color:var(--text-muted)">}</span><br><br>
+
+        <div style="color:var(--purple);font-weight:600">// 2. Work — task completion triggers unblocking cascade</div>
+        <span style="color:var(--text)">result = flow_task_update(task_id=</span><span style="color:var(--emerald)">"task-005"</span><span style="color:var(--text)">, status=</span><span style="color:var(--emerald)">"completed"</span><span style="color:var(--text)">, artifacts=[</span><span style="color:var(--emerald)">"PR #47"</span><span style="color:var(--text)">])</span><br>
+        <span style="color:var(--text-muted)">→ {</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;status: "completed",</span><br>
+        <span style="color:var(--emerald)">&nbsp;&nbsp;unblocked: ["task-006", "task-007"]</span><span style="color:var(--text-muted)">&nbsp;&nbsp;// dependents now ready</span><br>
+        <span style="color:var(--text-muted)">}</span><br><br>
+
+        <div style="color:var(--purple);font-weight:600">// 3. Session ends — atomic checkpoint + handoff + metrics</div>
+        <span style="color:var(--text)">result = flow_session_end(project_id=</span><span style="color:var(--emerald)">"proj-auth-layer"</span><span style="color:var(--text)">,</span><br>
+        <span style="color:var(--text)">&nbsp;&nbsp;summary=</span><span style="color:var(--emerald)">"JWT refresh and token rotation implemented"</span><span style="color:var(--text)">,</span><br>
+        <span style="color:var(--text)">&nbsp;&nbsp;next_actions=[</span><span style="color:var(--emerald)">"Integration tests"</span><span style="color:var(--text)">, </span><span style="color:var(--emerald)">"Update API docs"</span><span style="color:var(--text)">])</span><br>
+        <span style="color:var(--text-muted)">→ {</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;percent_complete: 62.5,</span><br>
+        <span style="color:var(--emerald)">&nbsp;&nbsp;promote_to_memory: [</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;&nbsp;&nbsp;{ content: "Auth uses RS256 JWT with 15min access / 7day refresh",</span><br>
+        <span style="color:var(--text-muted)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entities: ["auth", "jwt"], category: "project" }</span><br>
+        <span style="color:var(--emerald)">&nbsp;&nbsp;]</span><br>
+        <span style="color:var(--text-muted)">}</span>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="section">
+      <h2>Features</h2>
+      <p class="lead">Purpose-built primitives for tracking work across agent sessions.</p>
+
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="product-card">
+          <h3>Dependency Resolution</h3>
+          <p>Full DAG with topological ordering and cycle detection. <code>flow_task_add</code> validates dependency chains — circular dependencies are rejected immediately with the cycle path reported.</p>
+        </div>
+        <div class="product-card">
+          <h3>Unblocking Cascade</h3>
+          <p>Completing a task returns the list of newly-ready dependents. The agent doesn't traverse the graph — Flow does the work and hands back actionable task IDs.</p>
+        </div>
+        <div class="product-card">
+          <h3>Decision Tracking</h3>
+          <p>Every architectural and implementation choice is recorded with reasoning and context. Decisions support supersession — a new decision explicitly replaces an old one, maintaining the audit trail.</p>
+        </div>
+        <div class="product-card">
+          <h3>Atomic Session End</h3>
+          <p><code>flow_session_end</code> saves checkpoint + creates handoff in a single atomic call. No half-states. The next session either gets everything or nothing.</p>
+        </div>
+        <div class="product-card">
+          <h3>Memory Promotion</h3>
+          <p>When a project completes or a session ends, Flow returns pre-formatted facts ready for <code>sirius_fact_add</code>. Lessons learned flow automatically into durable memory.</p>
+        </div>
+        <div class="product-card">
+          <h3>Project Completion</h3>
+          <p><code>flow_project_complete</code> archives all operational state and promotes durable learnings. Work data disappears cleanly — only wisdom persists.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tool Table -->
     <section class="section">
       <h2>MCP Tools (15)</h2>
+      <p class="lead">Standard MCP protocol. Works with any compatible agent framework.</p>
+
       <div style="overflow-x:auto">
         <table class="tool-table">
           <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
           <tbody>
-            <tr><td><code>flow_project_create</code></td><td>Create a project for tracked work</td></tr>
-            <tr><td><code>flow_project_list</code></td><td>List all projects (filter by status)</td></tr>
-            <tr><td><code>flow_project_complete</code></td><td>Archive and promote learnings to Memory</td></tr>
-            <tr><td><code>flow_task_add</code></td><td>Add task with dependencies (cycle detection)</td></tr>
-            <tr><td><code>flow_task_update</code></td><td>Update status — returns unblocked tasks</td></tr>
-            <tr><td><code>flow_task_list</code></td><td>View tasks (filter by status, ready-only)</td></tr>
-            <tr><td><code>flow_task_next</code></td><td>Get next task respecting dependencies + priority</td></tr>
-            <tr><td><code>flow_checkpoint_save</code></td><td>Save machine-resumable state snapshot</td></tr>
-            <tr><td><code>flow_checkpoint_load</code></td><td>Load latest checkpoint</td></tr>
-            <tr><td><code>flow_handoff_create</code></td><td>Brief the next agent/session</td></tr>
-            <tr><td><code>flow_handoff_receive</code></td><td>Read pending briefings (marks as consumed)</td></tr>
-            <tr><td><code>flow_session_start</code></td><td>One-call cold start — everything you need</td></tr>
-            <tr><td><code>flow_session_end</code></td><td>Atomic wrap-up (checkpoint + handoff)</td></tr>
-            <tr><td><code>flow_decision_record</code></td><td>Log a decision with reasoning</td></tr>
-            <tr><td><code>flow_decision_list</code></td><td>View decision history (supersession tracking)</td></tr>
+            <tr><td><code>flow_project_create</code></td><td>Create a new tracked project with metadata</td></tr>
+            <tr><td><code>flow_project_list</code></td><td>List all projects — filter by status (active, completed, archived)</td></tr>
+            <tr><td><code>flow_project_complete</code></td><td>Archive project, promote learnings to Memory</td></tr>
+            <tr><td><code>flow_task_add</code></td><td>Add task with optional dependencies — cycle detection built in</td></tr>
+            <tr><td><code>flow_task_update</code></td><td>Update task status — returns unblocked dependent task IDs</td></tr>
+            <tr><td><code>flow_task_list</code></td><td>View all tasks or filter by status; <code>ready_only=true</code> for actionable items</td></tr>
+            <tr><td><code>flow_task_next</code></td><td>Get next task respecting dependency order and priority</td></tr>
+            <tr><td><code>flow_checkpoint_save</code></td><td>Save machine-resumable state snapshot (arbitrary JSON)</td></tr>
+            <tr><td><code>flow_checkpoint_load</code></td><td>Load the latest checkpoint — returns null if none exists</td></tr>
+            <tr><td><code>flow_handoff_create</code></td><td>Create a human-readable briefing for the next agent/session</td></tr>
+            <tr><td><code>flow_handoff_receive</code></td><td>Read pending briefings — marks them as consumed</td></tr>
+            <tr><td><code>flow_session_start</code></td><td>One-call cold start — checkpoint, handoffs, tasks, decisions, suite hints</td></tr>
+            <tr><td><code>flow_session_end</code></td><td>Atomic wrap-up — checkpoint + handoff in one call</td></tr>
+            <tr><td><code>flow_decision_record</code></td><td>Log a decision with reasoning and optional supersession</td></tr>
+            <tr><td><code>flow_decision_list</code></td><td>View decision history — filters out superseded by default</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
+    <!-- Deployment -->
     <section class="section">
-      <h2>Session Lifecycle</h2>
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:2rem;font-family:monospace;font-size:0.85rem;overflow-x:auto">
-        <div style="color:var(--text-muted)">// Session starts — one call, full context</div>
-        flow_session_start(project_id, agent_id="me")<br>
-        <span style="color:var(--text-muted)">→ { task_summary, next_task, last_checkpoint, pending_handoffs, suite_hints }</span><br><br>
-        <div style="color:var(--text-muted)">// Work — task updates unblock dependents</div>
-        flow_task_update(task_id, status="completed", artifacts=["PR #12"])<br>
-        <span style="color:var(--text-muted)">→ { unblocked: ["task-uuid-now-ready"] }</span><br><br>
-        <div style="color:var(--text-muted)">// Session ends — atomic checkpoint + handoff</div>
-        flow_session_end(project_id, summary="Built auth layer", next_actions=[...])<br>
-        <span style="color:var(--text-muted)">→ { percent_complete: 67.5, promote_to_memory: [...] }</span>
+      <h2>Deployment</h2>
+      <p class="lead">Same 15 tools at every scale. Start embedded, graduate to hosted — zero code changes.</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <h3 style="color:var(--emerald)">Embedded</h3>
+          <p>In-process MCP server. Set <code>FLOW_BACKEND=memory</code> and run. State lives in-memory — perfect for single sessions, development, and testing. Zero dependencies.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--cyan)">Self-Hosted</h3>
+          <p>SQLite or Postgres backend. Persistent state across restarts. Deploy alongside your agent infrastructure. Full control over your data.</p>
+        </div>
+        <div class="product-card">
+          <h3 style="color:var(--purple)">Hosted</h3>
+          <p><code>flow.siriusmcp.com</code> — managed service. Multi-tenant, API-key auth, automatic backups. Same MCP tools, no infrastructure to maintain.</p>
+        </div>
       </div>
     </section>
 
+    <!-- Design Philosophy -->
+    <section class="section">
+      <h2>Design Philosophy</h2>
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="product-card">
+          <h3>Noisy When Active, Gone When Done</h3>
+          <p>Flow keeps every detail for the active task — file paths, step counts, blocked states, scratch notes. When the project completes, operational sludge is archived. Only lessons persist.</p>
+        </div>
+        <div class="product-card">
+          <h3>The Opposite of Memory</h3>
+          <p>Memory is durable, curated, high-signal. Flow is ephemeral, detailed, task-scoped. Putting your Jira board into your personal notebook would pollute both. Same principle here.</p>
+        </div>
+        <div class="product-card">
+          <h3>Agent is the Bridge</h3>
+          <p>Flow never calls other tools directly. It prepares data FOR them and signals WHEN to use them. <code>promote_to_memory</code> is pre-formatted for <code>sirius_fact_add</code> — the agent makes the call.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-      <p><a href="https://github.com/siriusmcp/sirius-flow" style="color:var(--accent);text-decoration:none">View on GitHub →</a></p>
+      <p style="margin-bottom:0.5rem"><a href="https://github.com/siriusmcp/sirius-flow" style="color:var(--purple);text-decoration:none;font-weight:500">View on GitHub →</a></p>
+      <p style="color:var(--text-muted);font-size:0.85rem">Part of the <a href="/" style="color:var(--accent);text-decoration:none">Sirius MCP Suite</a> — Memory · Hive · Flow</p>
     </footer>
   </div>
   <script src="js/constellation.js"></script>
